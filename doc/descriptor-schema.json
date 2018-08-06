@@ -28,6 +28,7 @@
         },
         "dlinks": {
             "type": "object",
+            "$comment": "The pattern for property names is the same as mhash values.",
             "patternProperties": {
                 "^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+$": {
                     "description": "A list of URIs for data retrieval.",
