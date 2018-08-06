@@ -25,6 +25,22 @@
             "type": "string",
             "$comment": "IPFS-like Base58-encoded multihash.",
             "pattern": "^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+$"
+        },
+        "dlinks": {
+            "type": "object",
+            "patternProperties": {
+                "^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+$": {
+                    "description": "A list of URIs for data retrieval.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/uri"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1
         }
     },
 
@@ -80,6 +96,10 @@
 
             "minItems": 1
         },
+        "data_links": {
+            "description": "If present, it maps data hashes to a list of URIs for data retrieval.",
+            "$ref": "#/definitions/dlinks"
+        },
         "signatures": {
             "description": "Signatures of injector services on this descriptor; public key and time stamp are used as signing entity.",
             "type": "object",
@@ -109,20 +129,7 @@
             "properties": {
                 "data_links": {
                     "description": "If present, it maps data hashes to a list of URIs for data retrieval.",
-                    "type": "object",
-                    "patternProperties": {
-                        "^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+$": {
-                            "description": "A list of URIs for data retrieval.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/uri"
-                            },
-                            "minItems": 1,
-                            "uniqueItems": true
-                        }
-                    },
-                    "additionalProperties": false,
-                    "minProperties": 1
+                    "$ref": "#/definitions/dlinks"
                 }
             }
         }

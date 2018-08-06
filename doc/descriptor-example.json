@@ -13,6 +13,10 @@
             "data_hash": "DATAHASH1"
         }
     ],
+    "data_links": {
+        "DATAHASH1": ["ipfs:/ipfs/QmXYZ…",
+                      "data:,%3C!DOCTYPE%20html%3E%0A%3Cp%3ETiny%20body%20here!%3C%2Fp%3E"]
+    },
     "signatures": {
         "ed25519:1:XXXX1#2018-01-15T21:31:51Z#FooBar injector service": {
             "ed25519:1": "YYYY1"

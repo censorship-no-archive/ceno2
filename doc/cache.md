@@ -4,7 +4,7 @@ In an abstract sense, an **injector cache** is nothing more than a set of **URI 
 
 A URI descriptor itself is defined as a set of different versions of the data and metadata behind a URI which make sense as a whole according to a particular injector service.  Different injectors may follow different criteria to group versions and select metadata depending on their purpose.
 
-Besides the *URI* of the described resource and the *date* when the descriptor was created, the descriptor contains a list of *versions* of the cached resource.  Each item in the list contains the insertion date, metadata, length and hash of that version of the resource.  Finally, the descriptor contains a list of *signatures* from injector services, with each item including a signature key and the signature itself (with its date).  Compact signature keys like Ed25519 are thus preferred.  The signatures help clients validate descriptors against trusted injector services regardless of how they obtained them.
+Besides the *URI* of the described resource and the *date* when the descriptor was created, the descriptor contains a list of *versions* of the cached resource.  Each item in the list contains the insertion date, metadata, length and hash of that version of the resource.  The descriptor may include a set of *data links* (either content-addressed, inline or location-addressed) for retrieving the data of each different version (by their content hash).  Finally, the descriptor contains a list of *signatures* from injector services, with each item including a signature key and the signature itself (with its date).  Compact signature keys like Ed25519 are thus preferred.  The signatures help clients validate descriptors against trusted injector services regardless of how they obtained them.
 
 (Having several signatures for the same descriptor allows several injector services with similar purposes to cooperate in sharing efforts to publish cached content by "adopting" other's descriptors.  In any case, when publishing a descriptor to some network —see below— the publisher is free to remove or add signatures.)
 
@@ -28,7 +28,7 @@ Since scanning the different supported distributed storage back-ends to locate c
 
  1. The mapping of URI to URI descriptor is *certified by an authority* (to avoid the insertion, retrieval and use of fake descriptors), and only by that authority (e.g. a mapping cannot be replaced by another authority which still provides valid URI descriptor signatures for the same URI).
  2. The data base is *eventually consistent*, i.e. nodes may not always have the latest mapping, but when they know about a newer valid version they update it automatically (this reduces the impact of misbehaving nodes sticking to old mappings).
- 3. A set of *data links* (either content-addressed, inline or location-addressed) is included with the URI to descriptor mapping, since URI descriptors do not provide ways for the retrieval of data.
+ 3. A set of *data links* can be added to the URI to descriptor mapping to indicate additional ways for retrieving data (managed by the publisher instead of injectors).
 
 > **A1b (Cooperation between injectors):** A process separated from private data base insertion (handled by injector hosts) can take snapshots of it for publication (with the desired degree of consistency).
 
