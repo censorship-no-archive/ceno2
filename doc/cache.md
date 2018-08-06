@@ -8,7 +8,7 @@ Besides the *URI* of the described resource and the *date* when the descriptor w
 
 (Having several signatures for the same descriptor allows several injector services with similar purposes to cooperate in sharing efforts to publish cached content by "adopting" other's descriptors.  In any case, when publishing a descriptor to some network —see below— the publisher is free to remove or add signatures.)
 
-> **B1a (Add support for URL descriptor documents):** This is supported by this proposal, with a dedicated key pair per injector service, and its publication is decoupled from its creation (see below).  The specific syntax and signature embedding is not specified, although [Peerkeep](https://perkeep.org/doc/json-signing/ "Peerkeep JSON signing") already offers an approach for JSON files.
+> **B1a (Add support for URL descriptor documents):** This is supported by this proposal, with a dedicated key pair per injector service, and its publication is decoupled from its creation (see below).  The specific syntax and signature embedding is not specified, although [Matrix](https://matrix.org/docs/spec/appendices.html#signing-json "Matrix JSON signing") and [Peerkeep](https://perkeep.org/doc/json-signing/ "Peerkeep JSON signing") already offer an approach for JSON files.
 
 > **B1b (Managing multiple versions of the same cached URL)**: URI descriptors provide the base for this although what constitutes a version is outside of the proposal itself and depends on the purpose of the injector service.
 
