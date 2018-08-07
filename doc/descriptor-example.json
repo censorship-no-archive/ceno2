@@ -10,7 +10,8 @@
                               "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
             "meta_http_rph": {"@version": "HTTP/1.1", "@code": "200", "@reason": "OK",
                               "date": "Mon, 15 Jan 2018 20:31:50 GMT", "server": "Apache",
-                              "content-type": "text/html"},
+                              "content-type": "text/html",
+                              "content-disposition": "inline; filename=\"foo.html\""},
             "data_length": 38,
             "data_hash": "DATAHASH1"
         },
@@ -21,7 +22,8 @@
                               "accept": "application/json"},
             "meta_http_rph": {"@version": "HTTP/1.1", "@code": "200", "@reason": "OK",
                               "date": "Sat, 20 Jan 2018 12:13:43 GMT", "server": "Apache",
-                              "content-type": "application/json"},
+                              "content-type": "application/json",
+                              "content-disposition": "inline; filename=\"foo.json\""},
             "data_length": 26,
             "data_hash": "DATAHASH2"
         }
