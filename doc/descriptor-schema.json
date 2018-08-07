@@ -53,9 +53,14 @@
             "const": 0,
             "$comment": "The same number indicated at the schema's title."
         },
-        "uri": {
-            "description": "The URI that this descriptor describes.",
-            "$ref": "#/definitions/uri"
+        "uris": {
+            "description": "The URIs that this descriptor describes.",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/uri"
+            },
+            "minItems": 1,
+            "uniqueItems": true
         },
         "ts": {
             "description": "The time when this descriptor was created.",
@@ -136,5 +141,5 @@
         }
     },
 
-    "required": ["ouinet_descriptor_version", "uri", "ts", "versions", "signatures"]
+    "required": ["ouinet_descriptor_version", "uris", "ts", "versions", "signatures"]
 }

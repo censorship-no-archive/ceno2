@@ -1,6 +1,6 @@
 {
     "ouinet_descriptor_version": 0,
-    "uri": "https://example.com/foo",
+    "uris": ["https://example.com/foo", "https://archive.example.com/2018/foo"],
     "ts": "2018-01-15T21:31:50Z",
     "versions": [
         {
