@@ -34,6 +34,10 @@ Ouinet's design regarding cached content:
     radical alterations of requests to further increase privacy should be
     handled by the user via anonymizing browsers or proxies).
 
+Also, Ouinet's distributed cache acts in a manner as an HTTP proxy cache, and
+as such it may enable cache poisoning attacks.  Cleaning requests from
+non-necessary headers can block some of these attacks.
+
 This document specifies the processing of an HTTP request coming from a
 browser into a **canonical request** to be used for storage in the distributed
 cache and for other purposes.  In general, this specification strives to
