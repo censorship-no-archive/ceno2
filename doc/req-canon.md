@@ -34,6 +34,10 @@ Ouinet's design regarding cached content:
     radical alterations of requests to further increase privacy should be
     handled by the user via anonymizing browsers or proxies).
 
+Also, Ouinet's distributed cache acts in a manner as an HTTP proxy cache, and
+as such it may enable cache poisoning attacks.  Cleaning requests from
+non-necessary headers can block some of these attacks.
+
 This document specifies the processing of an HTTP request coming from a
 browser into a **canonical request** to be used for storage in the distributed
 cache and for other purposes.  In general, this specification strives to
@@ -121,11 +125,11 @@ Headers not listed below are always dropped (DROP action).
 
 Ad hoc headers:
 
-  - `X-Ouinet-Canon`: ADD: This indicates what version of the canonicalization
-    procedure has been used for this request.  This allows several versions of
-    the software to coexist on using the same distributed database, and in the
-    future it may allow injectors to inject backwards-compatible keys for the
-    same resource.
+  - `X-Ouinet-Version`: ADD: This indicates what version of the
+    canonicalization procedure has been used for this request.  This allows
+    several versions of the software to coexist on using the same distributed
+    database, and in the future it may allow injectors to inject
+    backwards-compatible keys for the same resource.
 
     This header must be removed by injectors when contacting origin servers
     since the concept of a canonical request is useless to them (plus it may
@@ -484,7 +488,7 @@ A simple request coming from a desktop browser for URL
     Accept-Language: ca,en-US;q=0.7,en;q=0.3(CRLF)
     Upgrade-Insecure-Requests: 1(CRLF)
     User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0(CRLF)
-    X-Ouinet-Canon: 0(CRLF)
+    X-Ouinet-Version: 0(CRLF)
     (CRLF)
 
 A ``HEAD`` request with all possible headers:
@@ -500,5 +504,5 @@ A ``HEAD`` request with all possible headers:
     Origin: http://example.net:8080(CRLF)
     Upgrade-Insecure-Requests: 1(CRLF)
     User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0(CRLF)
-    X-Ouinet-Canon: 0(CRLF)
+    X-Ouinet-Version: 0(CRLF)
     (CRLF)
